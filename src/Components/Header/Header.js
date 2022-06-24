@@ -1,7 +1,8 @@
 import React from "react";
 import logo from "../../assets/logo2m-alter.webp"
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { getCardContentUtilityClass } from "@mui/material";
+import CartWidget from "./CartWidget";
+
 //import "./Header.css"
 
 const Header = () =>{
@@ -15,7 +16,7 @@ const Header = () =>{
             <a style={styles.anchors} href="">Aceites</a>
             <a style={styles.anchors} href="">Contacto</a>
         </nav>
-        <ShoppingCartIcon color="success" sx={{ fontSize: 50 }} />  
+        <CartWidget />
     </header>
     )
 }
