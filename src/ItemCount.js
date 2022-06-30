@@ -2,38 +2,33 @@ import React,{ useState } from 'react'
 
 const ItemCount = ({ miProp, aviso, initial, stock, onAdd}) => {
 
-    const [value, contador, setContador] = useState(initial);
+    const [contador, setContador] = useState(initial);
 
 
         const handlerClickSumar = () =>{
-            if (value <= stock){
-                setContador((contadorValue)=> contadorValue + 1);
-            }else{
-                console.log("Sin existencia");
+            if (contador < stock){
+                setContador(contador +1);
             }
         };
     
         const handlerClickRestar = () =>{
-            if (value > initial){
-                setContador((contadorValue)=> contadorValue -1 );
-            }else{
-                console.log("Tienes que seleccionar +");
+            if (contador > initial){
+                setContador(contador -1 );
             }
-        }
+        };
 
         const reset = () => {
-            setContador(1);
-            aviso();
+            setContador(initial);
         }
 
     return (
         <div style = {styles.card}>
             <div style = {styles.carrito}>{miProp}</div>
-            <h1 style = {styles.carrito}>{contador}</h1>
-            <button onClick={()=>handlerClickSumar()}>+</button>
+            <h1>{contador}</h1>
+            <button onClick={handlerClickSumar}>+</button>
             <button onClick={handlerClickRestar}>-</button>
-            <button onClick={reset}>Borrar carrito</button>
-            <button onClick={()=>aviso("Agregando al carrito")}>Agregando al carrito</button>
+            <button style= {styles.sincarrito} onClick={reset}>vaciar carrito</button>
+            <button style= {styles.carrito} onClick={()=>onAdd(contador)}>Agregar al carrito</button>
 
         </div>
     );
@@ -48,6 +43,13 @@ const styles ={
         textAlign: 'center',
     },
     
+    sincarrito:{
+        display: 'none',
+    },
+
+    carrito:{
+        display:'flex',
+    },
 }
 export default ItemCount
 

@@ -11,12 +11,16 @@ const App = () => {
     console.log(mensaje);
   }
 
-  const unMensaje = "Hi";
+  const onAdd = (cantidad) => {
+    alert(`Se agregaron ${cantidad} items en el carrito`)
+  }
+  
+  const unMensaje = "Carrito de Compras";
   return (
     <>
       <Header />
       <ItemListContainer greeting="Bienvenidxs a Medicina Natural" />
-      <ItemCount miProp={unMensaje} aviso={aviso} stock={5} />
+      <ItemCount miProp={unMensaje} aviso={aviso} stock={5} initial={1} onAdd ={onAdd}/>
     </>
   )
 }
