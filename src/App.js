@@ -4,6 +4,8 @@ import Header from "./Components/Header/Header";
 //import CartWidget from "./Components/Header/CartWidget";
 import ItemListContainer from "./ItemListContainer";
 import ItemCount from "./ItemCount";
+import Item from "./Item";
+import ItemList from "./ItemList";
 
 const App = () => {
 
@@ -12,7 +14,7 @@ const App = () => {
   }
 
   const onAdd = (cantidad) => {
-    alert(`Se agregaron ${cantidad} items en el carrito`)
+    console.log(`Se agregaron ${cantidad} items en el carrito`);
   }
   
   const unMensaje = "Carrito de Compras";
