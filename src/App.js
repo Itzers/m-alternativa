@@ -4,8 +4,8 @@ import Header from "./Components/Header/Header";
 //import CartWidget from "./Components/Header/CartWidget";
 import ItemListContainer from "./ItemListContainer";
 import ItemCount from "./ItemCount";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Item from "./Item";
-import ItemList from "./ItemList";
 
 const App = () => {
 
@@ -21,7 +21,7 @@ const App = () => {
   return (
     <>
       <Header />
-      <ItemListContainer greeting="Bienvenidxs a Medicina Natural" />
+      <ItemListContainer /*greeting="Bienvenidxs a Medicina Natural"*/ />
       <ItemCount miProp={unMensaje} aviso={aviso} stock={5} initial={1} onAdd ={onAdd}/>
     </>
   )

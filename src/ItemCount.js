@@ -25,8 +25,8 @@ const ItemCount = ({ miProp, aviso, initial, stock, onAdd}) => {
         <div style = {styles.card}>
             <div style = {styles.carrito}>{miProp}</div>
             <h1>{contador}</h1>
-            <button onClick={handlerClickSumar}>+</button>
-            <button onClick={handlerClickRestar}>-</button>
+            <button style = {styles.botones} onClick={handlerClickSumar}>+</button>
+            <button style = {styles.botones} onClick={handlerClickRestar}>-</button>
             <button style= {styles.sincarrito} onClick={reset}>vaciar carrito</button>
             <button style= {styles.carrito} onClick={()=>onAdd(contador)}>Agregar al carrito</button>
 
@@ -49,8 +49,14 @@ const styles ={
 
     carrito:{
         display:'flex',
+        border: 'none',
+    },
+
+    botones:{
+        border:'outset',
     },
 }
+
 export default ItemCount
 
 
