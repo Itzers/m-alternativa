@@ -5,17 +5,29 @@ import CartWidget from "./CartWidget";
 
 //import "./Header.css"
 
+const categories =[
+    {id:1, path:'/', name: 'Home',},
+    {id:2, path:'category/Extractos', name: 'Extractos',},
+    {id:3, path:'category/Aceites', name: 'Aceites',},
+    {id:4, path:'category/Contacto', name: 'Contacto',},
+];
+
 const Header = () =>{
     return (
     <header style = {styles.container}>
         <img style = {styles.imagen} src={logo} alt="" />
         <h1>NATURALEZA PARA TU CUERPO</h1>
-        <nav>
+        <ul>
+            {categories.map((category) => (
+                <link to={category.path} key={category.id}>{category.name}</link>
+            ))}
+        {/* <nav>
             <a style={styles.anchors} href="">Home</a>
             <a style={styles.anchors} href="">Extractos</a>
             <a style={styles.anchors} href="">Aceites</a>
             <a style={styles.anchors} href="">Contacto</a>
-        </nav>
+        </nav> */}
+        </ul>
         <CartWidget />
     </header>
     )

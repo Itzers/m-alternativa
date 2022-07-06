@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ItemList from './ItemList';
-import {getData} from './mocks/fakeApi';
+import {getData, getDataProduct} from './mocks/fakeApi';
 
 const ItemListContainer = ({ greeting }) => {
     const [productList, setProductList]=useState([])
@@ -16,7 +16,7 @@ const ItemListContainer = ({ greeting }) => {
     
     const getProductosHerbolarios = async () => {
         try{
-            const respuesta = await getData
+            const respuesta = await getDataProduct
             setProductList(respuesta)
         }catch(error){
             console.log(error)
