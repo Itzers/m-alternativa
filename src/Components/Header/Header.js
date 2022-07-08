@@ -7,9 +7,9 @@ import CartWidget from "./CartWidget";
 
 const categories =[
     {id:1, path:'/', name: 'Home',},
-    {id:2, path:'category/Extractos', name: 'Extractos',},
-    {id:3, path:'category/Aceites', name: 'Aceites',},
-    {id:4, path:'category/Contacto', name: 'Contacto',},
+    {id:2, path:'/category/Extractos', name: 'Extractos',},
+    {id:3, path:'/category/Aceites', name: 'Aceites',},
+    {id:4, path:'/category/Contacto', name: 'Contacto',},
 ];
 
 const Header = () =>{

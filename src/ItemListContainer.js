@@ -1,33 +1,40 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import ItemList from './ItemList';
-import {getData, getDataProduct} from './mocks/fakeApi';
+import {getData} from './mocks/fakeApi';
 
-const ItemListContainer = ({ greeting }) => {
-    const [productList, setProductList]=useState([])
-    const [loading, setLoading]=useState(true)
+const ItemListContainer = ({greeting}) => {
+    const [productList, setProductList]=useState([]);
+    const [loading, setLoading]=useState(true);
+    const {categoryId} = useParams ()
 
-        // useEffect(()=>{
-        //     getData
-        //     .then((result)=> setProductList(result))
-        //     .catch ((error)=> console.log(error))
-        //     .finally(()=>setLoading(false))
-        // },[])
+        useEffect(()=>{
+            getData
+            .then((result)=> {
+                if (categoryId){
+                    setProductList(result.filter((item)=> item.category === categoryId ))
+                }else{
+                    setProductList(result)
+                }
+            } )
+            .catch ((error)=> console.log(error))
+            .finally(()=>setLoading(false))
+        },[])
 
-    
-    const getProductosHerbolarios = async () => {
-        try{
-            const respuesta = await getDataProduct
-            setProductList(respuesta)
-        }catch(error){
-            console.log(error)
-        }finally{
-            setLoading(false)
-        }
-    }
+    // const getProductosHerbolarios = async () => {
+    //     try{
+    //         const respuesta = await getData
+    //         setProductList(respuesta)
+    //     }catch(error){
+    //         console.log(error)
+    //     }finally{
+    //         setLoading(false)
+    //     }
+    // }
 
-    useEffect(()=>{
-        getProductosHerbolarios()
-    },[])
+    // useEffect(()=>{
+    //     getProductosHerbolarios()
+    // },[])
 
     console.log(productList);
     return (
@@ -50,4 +57,4 @@ const ItemListContainer = ({ greeting }) => {
     }
 } */
 
-export default ItemListContainer
+export default ItemListContainer;

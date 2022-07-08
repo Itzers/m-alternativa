@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-//import {useParams } from 'react-router-dom';
-//import {getDataProduct} from './mocks/fakeApi';
+import {useParams } from 'react-router-dom';
 import ItemDetail from '../ItemDetailContainer/ItemDetail';
 import { useEffect } from "react";
-import { getDataProduct } from "../../mocks/fakeApi";
+import { getData } from "../../mocks/fakeApi";
 
-const ItemDetailContainer = ({}) => {
-    const [productList, setProductList] = useState({})
+
+const ItemDetailContainer = () => {
+    const [product, setProduct] = useState({})
     const [loading, setLoading]=useState(true)
 
-    //const {id} = useParams();
+    const {id} = useParams();
 
     // useEffect(() =>{
     //     setLoading (true);
@@ -17,16 +17,17 @@ const ItemDetailContainer = ({}) => {
     //     const URL = `https://fakestoreapi.com/products/${id}`;
     //     fetch (URL)
     //         .then(res=>res.json())
-    //         .then(json=>console.log(json))
+    //         .then(json=> setProductList(json))
     //         .finally(() => {
     //             setLoading (false);
     //         });
         
-    // })
-    const getProductosHerbolarios = async () => {
+    // }, [id]);
+
+    const getProductoHerbolario = async () => {
         try{
-            const respuesta = await getDataProduct
-            setProductList(respuesta)
+            const respuesta = await getData
+            setProduct(respuesta.find((item) => item.id === id))
         }catch(error){
             console.log(error)
         }finally{
@@ -35,15 +36,14 @@ const ItemDetailContainer = ({}) => {
     }
 
     useEffect(()=>{
-        getProductosHerbolarios()
+        getProductoHerbolario()
     },[])
 
-    console.log(productList);
     return (
         <div>
             {loading ? (<p>Cargando...</p>) : (
             <>
-            <ItemDetail productList={productList} /> 
+            <ItemDetail product={product} /> 
             </>
             )}
         </div>
