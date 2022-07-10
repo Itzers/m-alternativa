@@ -2,6 +2,7 @@ import React from "react";
 import logo from "../../assets/logo2m-alter.webp"
 import { getCardContentUtilityClass } from "@mui/material";
 import CartWidget from "./CartWidget";
+import { Link } from "react-router-dom";
 
 //import "./Header.css"
 
@@ -19,7 +20,7 @@ const Header = () =>{
         <h1>NATURALEZA PARA TU CUERPO</h1>
         <ul>
             {categories.map((category) => (
-                <link to={category.path} key={category.id}>{category.name}</link>
+                <Link style={styles.anchors} to={category.path} key={category.id}>{category.name}</Link>
             ))}
         {/* <nav>
             <a style={styles.anchors} href="">Home</a>
