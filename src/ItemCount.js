@@ -1,10 +1,8 @@
 import React,{ useState } from 'react'
 
-const ItemCount = ({ miProp, initial, stock, onAdd, contador, setContador}) => {
+const ItemCount = ({ product, stock, onAdd, contador, setContador}) => {
 
     
-
-
         const handlerClickSumar = () =>{
             if (contador < stock){
                 setContador(contador +1);
@@ -12,26 +10,27 @@ const ItemCount = ({ miProp, initial, stock, onAdd, contador, setContador}) => {
         };
     
         const handlerClickRestar = () =>{
-            if (contador > initial){
-                setContador(contador -1 );
+            if (contador > 0){
+                setContador(contador - 1 );
             }
         };
 
-        const reset = () => {
-            setContador(initial);
-        }
+        // const reset = () => {
+        //     setContador(initial);
+        // }
 
     return (
+        <>
         <div style = {styles.card}>
-            <div style = {styles.carrito}>{miProp}</div>
+            <div style = {styles.carrito}>{product}</div>
             <h1>{contador}</h1>
             <button style = {styles.botones} onClick={handlerClickSumar}>+</button>
             <button style = {styles.botones} onClick={handlerClickRestar}>-</button>
-            <button style= {styles.sincarrito} onClick={reset}>vaciar carrito</button>
-            <button style= {styles.carrito} onClick={()=>onAdd(contador)}>Agregar al carrito</button>
-
+            {/* <button style= {styles.sincarrito} onClick={reset}>vaciar carrito</button> */}
+            <button style= {styles.carrito} onClick={onAdd}>Agregar al carrito</button>
         </div>
-    );
+        </>
+    )
 }
 
 const styles ={
@@ -43,9 +42,9 @@ const styles ={
         textAlign: 'center',
     },
     
-    sincarrito:{
-        display: 'none',
-    },
+    // sincarrito:{
+    //     display: 'none',
+    // },
 
     carrito:{
         display:'flex',
