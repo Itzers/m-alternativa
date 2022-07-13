@@ -13,7 +13,7 @@ const App = () => {
         <Routes>
           <Route path= "/" element= {<ItemListContainer greeting="Bienvenidxs a Medicina Natural" />}  />
           <Route path= "/category/:categoryId" element= {<ItemListContainer />}/>
-          <Route path= "/detail:id" element= {<ItemDetailContainer />} />
+          <Route path= "/detail/:id" element= {<ItemDetailContainer />} />
           <Route path= "/cart" element={<Cart />}/>
       </Routes>
     </BrowserRouter>

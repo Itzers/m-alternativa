@@ -19,7 +19,7 @@ const ItemListContainer = ({greeting}) => {
             } )
             .catch ((error)=> console.log(error))
             .finally(()=>setLoading(false))
-        },[])
+        },[categoryId])
 
     // const getProductosHerbolarios = async () => {
     //     try{

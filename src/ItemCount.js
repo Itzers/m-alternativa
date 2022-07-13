@@ -1,8 +1,8 @@
 import React,{ useState } from 'react'
 
-const ItemCount = ({ miProp, aviso, initial, stock, onAdd}) => {
+const ItemCount = ({ miProp, initial, stock, onAdd, contador, setContador}) => {
 
-    const [contador, setContador] = useState(initial);
+    
 
 
         const handlerClickSumar = () =>{
