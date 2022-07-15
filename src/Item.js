@@ -4,6 +4,7 @@ import { Button } from 'react-bootstrap';
 import {Link, useNavigate} from 'react-router-dom';
 
 const Item = ({productosHerbolarios}) => {
+
     const navegar = useNavigate ()
     const {img, name, description, id} = productosHerbolarios
     return (
