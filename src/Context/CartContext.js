@@ -1,14 +1,25 @@
-import React, {createContext, useState, useSyncExternalStore } from "react";
+import React, {createContext, useState } from "react";
 
 export const  CartContext = createContext(); 
 const { Provider } = CartContext;
 
     const CartCustomProvider = ({children}) => {
     
-    const [productos, setProductos] = useState ([{name:'Jose'},{name:'maria'},{name:'brian'}]);
+    const [productos, setProductos] = useState ([]);
 
     const addProductos = (producto) => {
-        console.log("agregar Producto");
+        if(isInCart(producto.id)){
+            const carritoActualizado = productos.map((item)=>{
+                if(item.id === producto.id){
+                    return {...item, quantity: item.quantity + producto.quantity}
+                }else{
+                    return item
+                }
+            })
+            setProductos(carritoActualizado)
+        }else{
+            setProductos([...productos, producto])
+        }
     };
 
     const deleteProductos = (id) => {
@@ -20,11 +31,12 @@ const { Provider } = CartContext;
     };
 
     const getQtyProductos = () => {
-        const qty = 0;
-        productos.forEach(producto => qty += producto.qty);
-        return qty;
+        return productos.reduce((acc, item) => acc + item.quantity, 0)
     };
 
+    const getTotalPrice = () => {
+        return productos.reduce((acc, item) => acc += item.quantity*item.price, 0)
+    }
     const clear = () => {
         setProductos([]);
     }
