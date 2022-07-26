@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Card } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import {Link, useNavigate} from 'react-router-dom';
+import { CartContext } from "./Context/CartContext";
 
 const Item = ({productosHerbolarios}) => {
-
+    const { productos } = useContext (CartContext)
+    const isInCart = productos.some((producto)=>producto.id === id )
     const navegar = useNavigate ()
     const {img, name, description, price, id} = productosHerbolarios
     return (
@@ -19,7 +21,7 @@ const Item = ({productosHerbolarios}) => {
                     ${price}
                 </Card.Text>
                 <Button variant="primary" onClick={()=> navegar(`/detail/${id}`)}>Detalles del Producto</Button>
-            
+            {isInCart && <h2>En el carrito</h2>}
             </Card.Body>
         </Card>
     );
