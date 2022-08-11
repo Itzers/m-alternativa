@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ItemList from './ItemList';
 import {getData} from './mocks/fakeApi';
+import { db } from './firebase/firebase';
+import { getDocs, collection, query } from 'firebase/firestore';
 
 const ItemListContainer = ({greeting}) => {
     const [productList, setProductList]=useState([]);
@@ -9,6 +11,16 @@ const ItemListContainer = ({greeting}) => {
     const {categoryId} = useParams ()
 
         useEffect(()=>{
+
+            const productsCollection = collection (db, 'ProductosHerbolarios');
+            getDocs (productsCollection)
+            .then (result => {
+                const lista = result.docs.map(product => {
+                    return product.data()
+                })
+                console.log(lista);
+            })
+
             getData
             .then((result)=> {
                 if (categoryId){

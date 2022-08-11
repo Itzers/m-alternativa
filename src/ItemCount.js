@@ -5,7 +5,7 @@ const ItemCount = ({ product, stock, onAdd, contador, setContador}) => {
     
         const handlerClickSumar = () =>{
             if (contador < stock){
-                setContador(contador +1);
+                setContador(contador + 1);
             }
         };
     

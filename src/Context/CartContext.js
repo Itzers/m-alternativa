@@ -11,6 +11,7 @@ const { Provider } = CartContext;
         if(isInCart(producto.id)){
             const carritoActualizado = productos.map((item)=>{
                 if(item.id === producto.id){
+                    console.log(item.quantity + producto.quantity);
                     return {...item, quantity: item.quantity + producto.quantity}
                 }else{
                     return item

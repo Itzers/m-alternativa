@@ -4,7 +4,7 @@ import Item from "./Item"
 const ItemList = ({productList}) => {
     return (
         <div>
-            <h3>Lista de productos</h3>
+            <h3>Tienda</h3>
             <div style={styles.productosHerbolarios}>
             {productList.map((productosHerbolarios)=><Item key={productosHerbolarios.id} productosHerbolarios={productosHerbolarios}/>)}
             </div>
@@ -15,9 +15,10 @@ const ItemList = ({productList}) => {
 const styles = {
     productosHerbolarios:{
         display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
+        justifyContent: 'space-around',
+        alignContent: 'baseline',
         flexWrap: 'wrap',
+        textAlign: 'center',
     }
 }
 
